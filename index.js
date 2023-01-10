@@ -5,22 +5,42 @@ const displayResScreen = document.querySelector('.screen');
 
 let userInput = [];
 
+// handle button clicks
 btnContainer.addEventListener('click', (e)=>{
+
+    // handle buttons with digits (0-9)
     if (e.target.classList.contains('num')){
         handleNumText(e.target.textContent);
         console.log(userInput);
         displayResScreen.textContent = userInput.join(' ');
     }
+
+    // handle operator buttons (+ / x -)
     else if (e.target.classList.contains('op')){
         handleOpText(e.target.textContent);
         displayResScreen.textContent = userInput.join(' ');
     }
+
+    // handle dot button (.)
     else if (e.target.classList.contains('dot')){
         handleDotText(e.target.textContent);
         displayResScreen.textContent = userInput.join(' ');
     }
+
+    // calculate exression when equal sign is clicked
     else if (e.target.classList.contains('eq')){
         handleCalOp();
+    }
+
+    // clear everything when clear button is clicked
+    else if (e.target.classList.contains('clear')){
+        handleClear();
+    }
+
+    // remove 1 character from the expression from the end.
+    else if (e.target.classList.contains('back')){
+        handleRemoveFromEnd();
+        displayResScreen.textContent = userInput.join(' ');
     }
 });
 
@@ -38,6 +58,24 @@ function handleNumText(text){
     else{
         userInput.push(text);
     }
+}
+
+function handleRemoveFromEnd(){
+    if (userInput.length === 0){
+        return;
+    }
+    let lastSeen = userInput[userInput.length-1];
+    if (lastSeen.length === 1){
+        userInput.pop();
+        return;
+    }
+    lastSeen = lastSeen.substr(0,lastSeen.length-1);
+    userInput.pop();
+    userInput.push(lastSeen);
+}
+
+function handleClear(){
+    displayResScreen.textContent = '';
 }
 
 function handleOpText(text){
@@ -67,8 +105,8 @@ function handleCalOp(){
         userInput.length = 0;
     }
     else{
-        displayResScreen.textContent = ''+calculate(userInput);
-        console.log(userInput);
+        calculate(userInput);
+        displayResScreen.textContent = userInput[0];
     }
 }
 
