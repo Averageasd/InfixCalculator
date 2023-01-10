@@ -1,3 +1,7 @@
+
+
+
+
 function calculate(expression){
     let convertedPosfixExpression = getPosfixEquivalence(expression);
     let st = [];
@@ -31,10 +35,9 @@ function calculate(expression){
 }
 
 function getPosfixEquivalence(expression){
-    let expressionArr = expression.split(' ');
     let posfixArr = [];
     let opStack = [];
-    for (let element of expressionArr){
+    for (let element of expression){
         if (!isOperator(element)){
             posfixArr.push(element);
         }
@@ -73,8 +76,11 @@ function isOperator(element){
     return ("+-*/").includes(element);
 }
 
-let expression = '1 * 2 + 3 / 6';
+let expression = ['1','*','2','+','3','/','6'];
 console.log(calculate(expression));
 
-
-
+// testing out some regex patterns. 
+const numWithDotPattern = /^([0-9]+)(\.{1})([0-9]+)$/gm;
+const numWithoutDotPattern =/^([0-9]+)([^\.]{0})([0-9]*)$/gm;
+let match = numWithDotPattern.test('.0..0.2');
+console.log(match);

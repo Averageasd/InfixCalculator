@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container{
+    width: 400px;
+    border: 1px solid #E8E8E8;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.screen{
+    height: 50px;
+    background-color: rgb(240,240,240);
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 24px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding: 8px;
+    align-items: center;
+}
+.button-container > div{
+    display: flex;
+    gap:8px;
+}
+
+.btn{
+    font-size: 18px;
+    flex-grow: 1;
+    border: 0;
+    width: 100px;
+    border-radius: 3px;
+    height: 50px;
+    font-weight: 400;
+    background-color: #E0E0E0;
+    cursor: pointer;
+}
