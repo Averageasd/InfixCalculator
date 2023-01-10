@@ -75,6 +75,7 @@ function handleRemoveFromEnd(){
 }
 
 function handleClear(){
+    userInput.length = 0;
     displayResScreen.textContent = '';
 }
 
